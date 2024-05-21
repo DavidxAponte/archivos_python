@@ -18,6 +18,27 @@ def altura_promedio(genero):
     # - genero
     # - altura
 
+    csvfile = open('alturas.csv')
+    # Leer todos los datos y almacenarlos en una 
+    # lista de diccionarios
+    personas = list(csv.DictReader(csvfile))
+
+    # Una vez leido los datos, cerrar el archivo
+    csvfile.close()
+
+    cantidad = 0
+    totalAltura = 0
+    
+    for persona in personas:
+            if persona["genero"] == genero: 
+                cantidad += 1
+                totalAltura += float(persona["altura"])
+
+    promedio = totalAltura / cantidad
+
+    print(f"El promedio de la altura entre el genero {genero} es {promedio}")        
+   
+
     # Profe:
     # - Leer el archivo CSV
     # - Recorrer todas las filas del archivo CSV
